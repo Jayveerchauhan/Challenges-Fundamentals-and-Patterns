@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+		
+        Scanner scanner = new Scanner(System.in);
+        
+		int num = scanner.nextInt();
+        
+		int dig = scanner.nextInt();
+        
+        int count = countdigitoccurrences(num, dig);
+        
+		System.out.println(count);
+    }
+    
+    public static int countdigitoccurrences(int num, int dig) {
+        
+		int count = 0;
+        while (num > 0) {
+        
+		    int lastDigit = num % 10;
+            if (lastDigit == dig) {
+        
+		        count++;
+            }
+            num /= 10;
+        
+		}
+        return count;
+    }
+	
+}
