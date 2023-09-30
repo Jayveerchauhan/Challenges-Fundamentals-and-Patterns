@@ -1,0 +1,50 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+    public static void sort(long[] a, int n) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (a[j] > a[i]) {
+                    long temp = a[j];
+                    a[j] = a[i];
+                    a[i] = temp;
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = scanner.nextInt();
+        while (t > 0) {
+            int N = scanner.nextInt();
+            long[] price = new long[N];
+            for (int i = 0; i < N; i++) {
+                price[i] = scanner.nextLong();
+            }
+            int balance = scanner.nextInt();
+            sort(price, N);
+            int i = 0, j = N - 1;
+            int mini = 0, minj = 0;
+            int diff = 10000;
+            while (i < j) {
+                if (price[i] + price[j] == balance) {
+                    if (diff >= price[j] - price[i]) {
+                        mini = i;
+                        minj = j;
+                        diff = (int) (price[j] - price[i]);
+                    }
+                    i++;
+                    j--;
+                } else if (price[i] + price[j] < balance) {
+                    i++;
+                } else {
+                    j--;
+                }
+            }
+            System.out.println("Deepak should buy roses whose prices are " + price[mini] + " and " + price[minj]);
+            t--;
+        }
+    }
+}
