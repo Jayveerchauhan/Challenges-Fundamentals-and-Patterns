@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class Main{
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        
+		int N = scanner.nextInt();
+
+        for (int row = 1; row <= N; row++) {
+            
+            for (int number = 1; number <= N - row + 1; number++) {
+
+                System.out.print(number + " ");
+            }
+
+            
+            for (int star = 1; star <= 2 * row - 3; star++) {
+                System.out.print("* ");
+            }
+
+            
+            System.out.println();
+        }
+
+        scanner.close();
+    }
+}
